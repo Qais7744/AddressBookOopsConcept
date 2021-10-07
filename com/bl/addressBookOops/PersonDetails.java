@@ -10,35 +10,35 @@ public class PersonDetails {
 	private String phoneNumber;
 	private String email;
 	
-	public void setName(String firstName) {
+	public void Name(String firstName) {
 		this.firstName = firstName;
 	}
 	
-	public void setLastName(String lastName) {
+	public void LastName(String lastName) {
 		this.lastName = lastName;
 	}
 	
-	public void setAddress(String address) {
+	public void Address(String address) {
 		this.address = address;
 	}
 	
-	public void setCity(String city) {
+	public void City(String city) {
 		this.city = city;
 	}
 	
-	public void setState(String state) {
+	public void State(String state) {
 		this.state = state;
 	}
 	
-	public void setZip(int zip) {
+	public void Zip(int zip) {
 		this.zip = zip;
 	}
 	
-	public void setPhoneNumber(String phoneNumber) {
+	public void PhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
-	public void setEmail(String email) {
+	public void Email(String email) {
 		this.email = email;
 	}
 

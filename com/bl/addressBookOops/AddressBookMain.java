@@ -5,14 +5,14 @@ public class AddressBookMain {
 		System.out.println("Welcome to Address Book Program");
 		
 		PersonDetails person = new PersonDetails();
-		person.setName("Qais");
-		person.setLastName("Bagwan");
-		person.setAddress("MahatGalli");
-		person.setCity("Nippani");
-		person.setState("Karnataka");
-		person.setZip(591237);
-		person.setPhoneNumber("7744918893");
-		person.setEmail("qaisbagwan23@gmail.com");
+		person.Name("Qais");
+		person.LastName("Bagwan");
+		person.Address("MahatGalli");
+		person.City("Nippani");
+		person.State("Karnataka");
+		person.Zip(591237);
+		person.PhoneNumber("7744918893");
+		person.Email("qaisbagwan23@gmail.com");
 		System.out.println(person.toString());
 	}
 
