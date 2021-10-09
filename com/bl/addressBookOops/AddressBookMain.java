@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class AddressBookMain {
 	public static String userInput() {
-		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		String string = scanner.nextLine();
 		return string;
