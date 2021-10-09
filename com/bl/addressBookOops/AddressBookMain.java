@@ -1,5 +1,6 @@
 package com.bl.addressBookOops;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBookMain {
@@ -11,8 +12,11 @@ public class AddressBookMain {
 	}
 	
 	public static void main(String[] args) {
+		
 		System.out.println("Welcome to Address Book Program");
 				
+		ArrayList<String> addressList = new ArrayList<>();
+		
 		PersonDetails personOne = new PersonDetails();
 		System.out.println("Please Enter the Name :");
 		personOne.setFirstName(userInput());
