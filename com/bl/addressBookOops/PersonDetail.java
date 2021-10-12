@@ -1,21 +1,32 @@
 package com.bl.addressBookOops;
 
-public class PersonDetails {
+public class PersonDetail {
 	
 	private String firstName;
-	private String lastName;
-	private String address;
-	private String city;
-	private String state;
+    private String lastName;
+    private String address;
+    private String city;
+    private String state;
 	private String zipCode;
 	private String phoneNumber;
 	private String email;
 
-	public String getFirstName() {
+    public PersonDetail(String firstName, String lastName, String address, String city, String state, String zipCode, String phoneNumber,  String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
+    public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
@@ -73,13 +84,14 @@ public class PersonDetails {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}	
+	}
 
 	@Override
 	public String toString() {
-		return "PersonDetails [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
-				+ city + ", state=" + state + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber + ", email="
-				+ email + "]";
+		return "Data [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city=" + city
+				+ ", state=" + state + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber + ", email=" + email
+				+ "]";
 	}
-	
+
 }
+
