@@ -59,8 +59,11 @@ public class AddressBook {
 
 			case 2:
 				System.out.println("Enter First Name of contact that you would like to edit: ");
-				// Character input
 				addPersonDetail.editContact(contact);
+				break;
+			
+			case 3:
+				addPersonDetail.deleteContact(contact);
 				break;
 
 			default:
