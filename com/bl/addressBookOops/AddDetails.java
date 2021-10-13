@@ -20,6 +20,7 @@ public class AddDetails {
 				System.out.println("2. Enter The update LastName. ");
 				System.out.println("3. Enter The update Address. ");
 				System.out.println("4. Enter The update City. ");
+				
 				System.out.println("5. Enter The update State. ");
 				System.out.println("6. Enter The update ZipCode. ");
 				System.out.println("7. Enter The update PhoneNumber. ");
@@ -77,14 +78,15 @@ public class AddDetails {
 		}
 	}
 	// Delete method use to delete the data.
-	public void deleteContact(ArrayList<PersonDetail> contatctDetails) {
-		System.out.println("Enter The Name");
-		String data = scanDetails.nextLine();
-		for (int i = 0; i < contatctDetails.size(); i++) {
-			if (contatctDetails.get(i).getFirstName().equals(data)) {
-				contatctDetails.remove(i);
-			} else
-				System.out.println("not match any details");
+		public void deleteContact(ArrayList<PersonDetail> contatctDetails) {
+			System.out.println("Enter The Name");
+			String data = scanDetails.nextLine();
+			for (int i = 0; i < contatctDetails.size(); i++) {
+				if (contatctDetails.get(i).getFirstName().equals(data)) {
+					contatctDetails.remove(i);
+				
+				} else
+					System.out.println("not match any details");
+			}
 		}
-	}
 }

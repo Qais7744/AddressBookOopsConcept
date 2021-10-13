@@ -19,10 +19,11 @@ public class AddressBook {
 		menu = scanner.nextInt();
 		return menu;
 	}
-
+	
 	public static void main(String[] args) {
 		// we create an object from the AddDetails class named addPersonDetail.
 		AddDetails addPersonDetail = new AddDetails();
+		
 		// we use while loop
 		menu = choice();
 		while (menu != 0) {
@@ -61,13 +62,13 @@ public class AddressBook {
 				System.out.println("Enter First Name of contact that you would like to edit: ");
 				addPersonDetail.editContact(contact);
 				break;
-			
+				
 			case 3:
 				addPersonDetail.deleteContact(contact);
 				break;
 
 			default:
-				System.out.println("Please choose a valid contact details");
+				System.out.println("Complete Process update Contact Details");
 				break;
 
 			}
