@@ -92,6 +92,5 @@ public class PersonDetail {
 				+ ", state=" + state + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber + ", email=" + email
 				+ "]";
 	}
-
 }
 
