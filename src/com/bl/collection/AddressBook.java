@@ -62,7 +62,7 @@ public class AddressBook {
                         PersonDetail personDetail = new PersonDetail(firstName, lastName, address, city, state, zipCode,
                                 phoneNumber, email);
                         boolean addNewEntry = addPersonDetail.duplicateDetailsRemove(contact);
-                        System.out.println("The value is" + " " + addNewEntry);
+                        System.out.println("The value is " + " " + addNewEntry);
                         if (addNewEntry)
                             contact.add(personDetail);
                         else
