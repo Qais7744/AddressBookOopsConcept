@@ -1,6 +1,7 @@
 package com.bl.collection;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddDetails {
@@ -96,4 +97,6 @@ public class AddDetails {
         boolean result = addNewDetails.stream().map(PersonDetail::getFirstName).distinct().limit(2).count() <= 1;
         return result;
     }
+
+    public void search(HashMap)
 }
