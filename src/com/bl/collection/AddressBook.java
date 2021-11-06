@@ -8,6 +8,7 @@ public class AddressBook {
     public static Scanner scanner = new Scanner(System.in);
     static Hashtable<Integer, ArrayList<PersonDetail>> hashTable = new Hashtable<>();
     static int choice;
+    static AddDetails addPersonDetail = new AddDetails();
 
     public static int choice() {
         // Print the value to choice.
@@ -85,6 +86,7 @@ public class AddressBook {
                 }
             }
             hashTable.put(i, contact);
+            addPersonDetail.searchDetails(hashTable);
         }
         for (int i = 1; i <= hashTable.size(); i++) {
             System.out.println("address book " + i);
