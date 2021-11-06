@@ -1,10 +1,14 @@
 package com.bl.collection;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddDetails {
     Scanner scanDetails = new Scanner(System.in);
+    AddressBook Details = new AddressBook();
 
     // Edit method use to edit the data.
     public void editContact(ArrayList<PersonDetail> contactDetails) {
@@ -95,5 +99,18 @@ public class AddDetails {
     public boolean duplicateDetailsRemove(ArrayList<PersonDetail> addNewDetails) {
         boolean result = addNewDetails.stream().map(PersonDetail::getFirstName).distinct().limit(2).count() <= 1;
         return result;
+    }
+
+    public void searchDetails(Hashtable<Integer, ArrayList<PersonDetail>> hashtable) {
+        System.out.println("Enter the City Name");
+        String cityName = scanDetails.nextLine();
+        System.out.println("Enter the State Name");
+        String stateName = scanDetails.nextLine();
+        for (int i = 1; i <= hashtable.size(); i++) {
+            List<PersonDetail> numberOfCity = hashtable.get(i).stream().filter(city -> city.getCity().equalsIgnoreCase(cityName)).collect(Collectors.toList());
+            System.out.println("Details of City " + numberOfCity + "\n " + "Number of Times " + numberOfCity.size());
+            List<PersonDetail> numberOfState = hashtable.get(i).stream().filter(state -> state.getState().equalsIgnoreCase(stateName)).collect(Collectors.toList());
+            System.out.println("Details of State " + numberOfState + "\n " + "Number of Times " + numberOfState.size());
+        }
     }
 }
