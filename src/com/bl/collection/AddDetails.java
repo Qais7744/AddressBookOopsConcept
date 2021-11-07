@@ -105,14 +105,15 @@ public class AddDetails {
         int totalNumberOfCount = 0;
         for (int i = 1; i <= hashtable.size(); i++) {
             List<PersonDetail> numberOfCity = hashtable.get(i).stream().filter(search -> search.getCity().equalsIgnoreCase(cityOrStateName)
-                                              || search.getState().equals(cityOrStateName)).collect(Collectors.toList());
+                    || search.getState().equals(cityOrStateName)).collect(Collectors.toList());
             System.out.println("Details of CityOrState " + numberOfCity + "\n "
-                                                         + "Number of Times " + numberOfCity.size() + "\n"
-                                                         + "Count by CityOrState " + numberOfCity.stream().count());
+                    + "Number of Times " + numberOfCity.size() + "\n"
+                    + "Count by CityOrState " + numberOfCity.stream().count());
             totalNumberOfCount = (int) (totalNumberOfCount + numberOfCity.stream().count());
         }
         System.out.println("Total number of counted by added city or state " + totalNumberOfCount);
     }
+
     public void sortDetails(Hashtable<Integer, ArrayList<PersonDetail>> sortedDetails) {
         for (int i = 1; i <= sortedDetails.size(); i++) {
             System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getFirstName)).collect(Collectors.toList()));
