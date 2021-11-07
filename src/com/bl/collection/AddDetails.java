@@ -113,4 +113,9 @@ public class AddDetails {
         }
         System.out.println("Total number of counted by added city or state " + totalNumberOfCount);
     }
+    public void sortDetails(Hashtable<Integer, ArrayList<PersonDetail>> sortedDetails) {
+        for (int i = 1; i <= sortedDetails.size(); i++) {
+            System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getFirstName)).collect(Collectors.toList()));
+        }
+    }
 }

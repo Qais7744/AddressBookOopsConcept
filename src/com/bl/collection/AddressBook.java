@@ -92,6 +92,8 @@ public class AddressBook {
             System.out.println(hashTable.get(i));
         }
         addPersonDetail.searchDetails(hashTable);
+        System.out.println("After sorting the Details ");
+        addPersonDetail.sortDetails(hashTable);
         {
             System.out.println("Goodbye!");
             System.out.println();
