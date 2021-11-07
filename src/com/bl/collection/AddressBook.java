@@ -86,12 +86,12 @@ public class AddressBook {
                 }
             }
             hashTable.put(i, contact);
-            addPersonDetail.searchDetails(hashTable);
         }
         for (int i = 1; i <= hashTable.size(); i++) {
             System.out.println("address book " + i);
             System.out.println(hashTable.get(i));
         }
+        addPersonDetail.searchDetails(hashTable);
         {
             System.out.println("Goodbye!");
             System.out.println();
