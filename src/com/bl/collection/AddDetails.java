@@ -116,7 +116,7 @@ public class AddDetails {
 
     public void sortDetails(Hashtable<Integer, ArrayList<PersonDetail>> sortedDetails) {
         for (int i = 1; i <= sortedDetails.size(); i++) {
-            System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getFirstName)).collect(Collectors.toList()));
+            System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getCity).thenComparing(PersonDetail::getZipCode)).collect(Collectors.toList()));
         }
     }
 }
