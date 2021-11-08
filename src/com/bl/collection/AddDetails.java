@@ -1,10 +1,14 @@
 package com.bl.collection;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.nio.file.Path;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class AddDetails {
     Scanner scanDetails = new Scanner(System.in);
+    AddressBook Details = new AddressBook();
 
     // Edit method use to edit the data.
     public void editContact(ArrayList<PersonDetail> contactDetails) {
@@ -92,8 +96,9 @@ public class AddDetails {
         }
     }
 
-    public boolean duplicateDetailsRemove(ArrayList<PersonDetail> addNewDetails) {
-        boolean result = addNewDetails.stream().map(PersonDetail::getFirstName).distinct().limit(2).count() <= 1;
+    // Ignore Duplicate method when added details.
+    public boolean duplicateDetailsRemove(ArrayList<PersonDetail> addNewDetails, String firstName) {
+        boolean result = addNewDetails.stream().filter(personDetail -> personDetail.getFirstName().equals(firstName)).findFirst().isPresent();
         return result;
     }
 }
