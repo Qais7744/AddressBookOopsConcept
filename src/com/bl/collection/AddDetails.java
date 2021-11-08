@@ -1,9 +1,9 @@
 package com.bl.collection;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.nio.file.Path;
+import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class AddDetails {
@@ -96,21 +96,22 @@ public class AddDetails {
         }
     }
 
-    public boolean duplicateDetailsRemove(ArrayList<PersonDetail> addNewDetails) {
-        boolean result = addNewDetails.stream().map(PersonDetail::getFirstName).distinct().limit(2).count() <= 1;
+    // Ignore Duplicate method when added details.
+    public boolean duplicateDetailsRemove(ArrayList<PersonDetail> addNewDetails, String firstName) {
+        boolean result = addNewDetails.stream().filter(personDetail -> personDetail.getFirstName().equals(firstName)).findFirst().isPresent();
         return result;
     }
 
+    // search Person in a City or State across the multiple AddressBook.
     public void searchDetails(Hashtable<Integer, ArrayList<PersonDetail>> hashtable) {
-        System.out.println("Enter the City Name");
-        String cityName = scanDetails.nextLine();
-        System.out.println("Enter the State Name");
-        String stateName = scanDetails.nextLine();
+        System.out.println("Enter the City or State Name");
+        String cityOrStateName = scanDetails.nextLine();
+        int totalNumberOfCount = 0;
         for (int i = 1; i <= hashtable.size(); i++) {
-            List<PersonDetail> numberOfCity = hashtable.get(i).stream().filter(city -> city.getCity().equalsIgnoreCase(cityName)).collect(Collectors.toList());
-            System.out.println("Details of City " + numberOfCity + "\n " + "Number of Times " + numberOfCity.size());
-            List<PersonDetail> numberOfState = hashtable.get(i).stream().filter(state -> state.getState().equalsIgnoreCase(stateName)).collect(Collectors.toList());
-            System.out.println("Details of State " + numberOfState + "\n " + "Number of Times " + numberOfState.size());
+            List<PersonDetail> numberOfCity = hashtable.get(i).stream().filter(search -> search.getCity().equalsIgnoreCase(cityOrStateName)
+                    || search.getState().equals(cityOrStateName)).collect(Collectors.toList());
+            System.out.println("Details of CityOrState " + numberOfCity + "\n"
+                    + "Number of Times " + numberOfCity.size());
         }
     }
 }
