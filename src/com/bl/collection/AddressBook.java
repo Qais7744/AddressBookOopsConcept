@@ -1,5 +1,6 @@
 package com.bl.collection;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Scanner;
@@ -25,7 +26,7 @@ public class AddressBook {
         return integerInput;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Use HashTable to add Multiple AddressBook in Dictionary.
         System.out.println("Enter The Number of add Multiple AddressBook");
         int numberOfAddressBook = inputInteger();
@@ -62,9 +63,10 @@ public class AddressBook {
                         String email = scanner.next();
                         PersonDetail personDetail = new PersonDetail(firstName, lastName, address, city, state, zipCode,
                                 phoneNumber, email);
-                        boolean addNewEntry = addPersonDetail.duplicateDetailsRemove(contact);
+                        boolean addNewEntry = addPersonDetail.duplicateDetailsRemove(contact, firstName);
+                        System.out.println(contact);
                         System.out.println("The value is " + " " + addNewEntry);
-                        if (addNewEntry)
+                        if (!addNewEntry)
                             contact.add(personDetail);
                         else
                             System.out.println("Finally Duplicate Entry Remove");
@@ -91,9 +93,6 @@ public class AddressBook {
             System.out.println("address book " + i);
             System.out.println(hashTable.get(i));
         }
-        addPersonDetail.searchDetails(hashTable);
-        System.out.println("After sorting the Details ");
-        addPersonDetail.sortDetails(hashTable);
         {
             System.out.println("Goodbye!");
             System.out.println();

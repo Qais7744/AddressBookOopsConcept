@@ -1,5 +1,7 @@
 package com.bl.collection;
 
+import java.io.*;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -94,29 +96,9 @@ public class AddDetails {
         }
     }
 
-    public boolean duplicateDetailsRemove(ArrayList<PersonDetail> addNewDetails) {
-        boolean result = addNewDetails.stream().map(PersonDetail::getFirstName).distinct().limit(2).count() <= 1;
+    // Ignore Duplicate method when added details.
+    public boolean duplicateDetailsRemove(ArrayList<PersonDetail> addNewDetails, String firstName) {
+        boolean result = addNewDetails.stream().filter(personDetail -> personDetail.getFirstName().equals(firstName)).findFirst().isPresent();
         return result;
-    }
-
-    public void searchDetails(Hashtable<Integer, ArrayList<PersonDetail>> hashtable) {
-        System.out.println("Enter the City or State Name");
-        String cityOrStateName = scanDetails.nextLine();
-        int totalNumberOfCount = 0;
-        for (int i = 1; i <= hashtable.size(); i++) {
-            List<PersonDetail> numberOfCity = hashtable.get(i).stream().filter(search -> search.getCity().equalsIgnoreCase(cityOrStateName)
-                    || search.getState().equals(cityOrStateName)).collect(Collectors.toList());
-            System.out.println("Details of CityOrState " + numberOfCity + "\n "
-                    + "Number of Times " + numberOfCity.size() + "\n"
-                    + "Count by CityOrState " + numberOfCity.stream().count());
-            totalNumberOfCount = (int) (totalNumberOfCount + numberOfCity.stream().count());
-        }
-        System.out.println("Total number of counted by added city or state " + totalNumberOfCount);
-    }
-
-    public void sortDetails(Hashtable<Integer, ArrayList<PersonDetail>> sortedDetails) {
-        for (int i = 1; i <= sortedDetails.size(); i++) {
-            System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getCity).thenComparing(PersonDetail::getZipCode)).collect(Collectors.toList()));
-        }
     }
 }
