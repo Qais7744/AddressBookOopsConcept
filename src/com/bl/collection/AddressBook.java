@@ -93,6 +93,7 @@ public class AddressBook {
             System.out.println("address book " + i);
             System.out.println(hashTable.get(i));
         }
+        addPersonDetail.searchDetails(hashTable);
         {
             System.out.println("Goodbye!");
             System.out.println();
