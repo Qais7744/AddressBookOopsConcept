@@ -109,7 +109,7 @@ public class AddDetails {
         int totalNumberOfCount = 0;
         for (int i = 1; i <= hashtable.size(); i++) {
             List<PersonDetail> numberOfCity = hashtable.get(i).stream().filter(search -> search.getCity().equalsIgnoreCase(cityOrStateName)
-                    || search.getState().equals(cityOrStateName)).collect(Collectors.toList());
+                                              || search.getState().equals(cityOrStateName)).collect(Collectors.toList());
             System.out.println("Details of CityOrState " + numberOfCity + "\n"
                     + "Number of Times " + numberOfCity.size());
         }
