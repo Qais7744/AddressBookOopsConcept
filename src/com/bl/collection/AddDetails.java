@@ -135,4 +135,34 @@ public class AddDetails {
             System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getZipCode)).collect(Collectors.toList()));
         }
     }
+
+    public void fileInputOutputStream(Hashtable<Integer, ArrayList<PersonDetail>> hashtableDetails) throws IOException {
+        FileOutputStream filePath = new FileOutputStream("C:\\Users\\Altamash\\IdeaProjects\\AddressBookCollection\\file.txt");
+        ObjectOutputStream fileObject = new ObjectOutputStream(filePath);
+        fileObject.writeObject(hashtableDetails);
+
+    }
+
+    public static void writeToFile(Hashtable<Integer, ArrayList<PersonDetail>> writeDetails) {
+        try {
+            FileWriter fileWriter = new FileWriter("readwritefileio.txt");
+            String stream = String.valueOf(writeDetails);
+            fileWriter.write(stream);
+            fileWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void readFromFile() {
+        try {
+            FileReader fileReader = new FileReader("readwritefileio.txt");
+            int i;
+            while ((i = fileReader.read()) != -1) {
+                System.out.print((char) i);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
