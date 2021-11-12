@@ -1,10 +1,10 @@
 package com.bl.collection;
 
 import java.io.*;
-import java.nio.file.Path;
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import com.google.gson.Gson;
 
 public class AddDetails {
     Scanner scanDetails = new Scanner(System.in);
@@ -118,35 +118,32 @@ public class AddDetails {
         System.out.println("Total number of counted by added city or state " + totalNumberOfCount);
     }
 
+    // Sort FirstName In HashTable.
     public void sortFirstName(Hashtable<Integer, ArrayList<PersonDetail>> sortedDetails) {
         for (int i = 1; i <= sortedDetails.size(); i++) {
             System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getFirstName)).collect(Collectors.toList()));
         }
     }
 
+    // Sort City In HashTable.
     public void sortCity(Hashtable<Integer, ArrayList<PersonDetail>> sortedDetails) {
         for (int i = 1; i <= sortedDetails.size(); i++) {
             System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getCity)).collect(Collectors.toList()));
         }
     }
 
+    // Sort ZipCode In HashTable.
     public void sortZipCode(Hashtable<Integer, ArrayList<PersonDetail>> sortedDetails) {
         for (int i = 1; i <= sortedDetails.size(); i++) {
             System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getZipCode)).collect(Collectors.toList()));
         }
     }
 
-    public void fileInputOutputStream(Hashtable<Integer, ArrayList<PersonDetail>> hashtableDetails) throws IOException {
-        FileOutputStream filePath = new FileOutputStream("C:\\Users\\Altamash\\IdeaProjects\\AddressBookCollection\\file.txt");
-        ObjectOutputStream fileObject = new ObjectOutputStream(filePath);
-        fileObject.writeObject(hashtableDetails);
-
-    }
-
-    public static void writeToFile(Hashtable<Integer, ArrayList<PersonDetail>> writeDetails) {
+    public static void writeToFileInJson(Hashtable<Integer, ArrayList<PersonDetail>> addContactDetails) {
         try {
-            FileWriter fileWriter = new FileWriter("addressBook.JSON");
-            String stream = String.valueOf(writeDetails);
+            Gson gson = new Gson();
+            String stream = gson.toJson(addContactDetails);
+            FileWriter fileWriter = new FileWriter("AddressBook.json");
             fileWriter.write(stream);
             fileWriter.close();
         } catch (Exception e) {
@@ -154,13 +151,12 @@ public class AddDetails {
         }
     }
 
-    public static void readFromFile() {
+    public static void readFromFileInJson() {
         try {
-            FileReader fileReader = new FileReader("addressBook.JSON");
-            int i;
-            while ((i = fileReader.read()) != -1) {
-                System.out.print((char) i);
-            }
+            Gson gson = new Gson();
+            BufferedReader buffer = new BufferedReader(new FileReader("AddressBook.json"));
+            ArrayList<PersonDetail> arrayList = gson.fromJson(buffer, ArrayList.class);
+            System.out.println(arrayList);
         } catch (Exception e) {
             e.printStackTrace();
         }

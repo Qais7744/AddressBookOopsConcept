@@ -88,25 +88,25 @@ public class AddressBook {
                 }
             }
             hashTable.put(i, contact);
-            addPersonDetail.writeToFile(hashTable);
+            addPersonDetail.writeToFileInJson(hashTable);
         }
         for (int i = 1; i <= hashTable.size(); i++) {
             System.out.println("address book " + i);
             System.out.println(hashTable.get(i));
         }
         System.out.println();
-        System.out.println("Reading AddressBook From File");
-        addPersonDetail.readFromFile();
+        System.out.println("Reading AddressBook using JSON");
+        addPersonDetail.readFromFileInJson();
         System.out.println();
         addPersonDetail.searchDetails(hashTable);
         System.out.println();
-        System.out.println("After Sorting The FirstName ");
+        System.out.println("After sorting the FirstName ");
         addPersonDetail.sortFirstName(hashTable);
         System.out.println();
-        System.out.println("After Sorting The City ");
+        System.out.println("After sorting the City ");
         addPersonDetail.sortCity(hashTable);
         System.out.println();
-        System.out.println("After Sorting The ZipCode ");
+        System.out.println("After sorting the ZipCode ");
         addPersonDetail.sortZipCode(hashTable);
         {
             System.out.println("Goodbye!");
