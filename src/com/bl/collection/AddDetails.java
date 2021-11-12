@@ -1,10 +1,11 @@
 package com.bl.collection;
 
 import java.io.*;
-import java.nio.file.Path;
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 
 public class AddDetails {
     Scanner scanDetails = new Scanner(System.in);
@@ -118,35 +119,32 @@ public class AddDetails {
         System.out.println("Total number of counted by added city or state " + totalNumberOfCount);
     }
 
+    // Sort FirstName In HashTable.
     public void sortFirstName(Hashtable<Integer, ArrayList<PersonDetail>> sortedDetails) {
         for (int i = 1; i <= sortedDetails.size(); i++) {
             System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getFirstName)).collect(Collectors.toList()));
         }
     }
 
+    // Sort City In HashTable.
     public void sortCity(Hashtable<Integer, ArrayList<PersonDetail>> sortedDetails) {
         for (int i = 1; i <= sortedDetails.size(); i++) {
             System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getCity)).collect(Collectors.toList()));
         }
     }
 
+    // Sort ZipCode In HashTable.
     public void sortZipCode(Hashtable<Integer, ArrayList<PersonDetail>> sortedDetails) {
         for (int i = 1; i <= sortedDetails.size(); i++) {
             System.out.println(sortedDetails.get(i).stream().sorted(Comparator.comparing(PersonDetail::getZipCode)).collect(Collectors.toList()));
         }
     }
 
-    public void fileInputOutputStream(Hashtable<Integer, ArrayList<PersonDetail>> hashtableDetails) throws IOException {
-        FileOutputStream filePath = new FileOutputStream("C:\\Users\\Altamash\\IdeaProjects\\AddressBookCollection\\file.txt");
-        ObjectOutputStream fileObject = new ObjectOutputStream(filePath);
-        fileObject.writeObject(hashtableDetails);
-
-    }
-
-    public static void writeToFile(Hashtable<Integer, ArrayList<PersonDetail>> writeDetails) {
+    // Use FileIO.
+    public static void writeToFile(Hashtable<Integer, ArrayList<PersonDetail>> contactDetails) {
         try {
-            FileWriter fileWriter = new FileWriter("addressBook.csv");
-            String stream = String.valueOf(writeDetails);
+            FileWriter fileWriter = new FileWriter("AddressBook.txt");
+            String stream = String.valueOf(contactDetails);
             fileWriter.write(stream);
             fileWriter.close();
         } catch (Exception e) {
@@ -154,13 +152,44 @@ public class AddDetails {
         }
     }
 
+    // Use CSVIO.
+    public static void writeToFileInOpenCsv(Hashtable<Integer, ArrayList<PersonDetail>> contactDetails) {
+        try {
+            FileWriter fileWriter = new FileWriter("AddressBook.csv");
+            CSVWriter csvWriter = new CSVWriter(fileWriter);
+            String[] array = new String[contactDetails.size()];
+            for (int i = 0; i < array.length; i++) {
+                array[i] = String.valueOf(contactDetails.get(i));
+            }
+            csvWriter.writeNext(array);
+            csvWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void readFromFile() {
         try {
-            FileReader fileReader = new FileReader("addressBook.csv");
+            FileReader fileReader = new FileReader("AddressBook.txt");
             int i;
             while ((i = fileReader.read()) != -1) {
                 System.out.print((char) i);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void readFromFileInOpenCsv() {
+        try {
+            FileReader fileReader = new FileReader("AddressBook.csv");
+            CSVReader csvReader = new CSVReader(fileReader);
+            String[] strings;
+            while ((strings = csvReader.readNext()) != null) {
+                for (String token : strings)
+                    System.out.print(token);
+            }
+            csvReader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
