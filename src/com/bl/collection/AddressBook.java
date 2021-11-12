@@ -88,19 +88,15 @@ public class AddressBook {
                 }
             }
             hashTable.put(i, contact);
-            addPersonDetail.writeToFile(hashTable);
-            addPersonDetail.writeToFileInOpenCsv(hashTable);
+            addPersonDetail.writeToFileInJson(hashTable);
         }
         for (int i = 1; i <= hashTable.size(); i++) {
             System.out.println("address book " + i);
             System.out.println(hashTable.get(i));
         }
         System.out.println();
-        System.out.println("Reading AddressBook from File");
-        addPersonDetail.readFromFile();
-        System.out.println();
-        System.out.println("Reading AddressBook from File");
-        addPersonDetail.readFromFileInOpenCsv();
+        System.out.println("Reading AddressBook using JSON");
+        addPersonDetail.readFromFileInJson();
         System.out.println();
         addPersonDetail.searchDetails(hashTable);
         System.out.println();
